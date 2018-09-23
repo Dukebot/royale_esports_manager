@@ -1,7 +1,6 @@
-package servlets.cartas;
+package servlets.mazos;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,23 +8,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import entities.Carta;
-import model.GestionCartas;
+import model.GestionMazos;
 
 /**
- * Servlet implementation class RecuperarAction
+ * Servlet implementation class EliminaContacto
  */
-@WebServlet("/RecuperarCartas")
-public class RecuperarCartas extends HttpServlet {
+@WebServlet("/EliminarMazo")
+public class EliminarMazo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		GestionCartas gCartas = new GestionCartas();
-		List<Carta> cartas = gCartas.recuperarCartas();
-		request.setAttribute("cartas", cartas);
-		request.getRequestDispatcher("cartas/ver_cartas.jsp").forward(request, response);
+		
+		int idMazo = Integer.parseInt(request.getParameter("idMazo"));
+		GestionMazos gm = new GestionMazos();
+		try {
+			gm.eliminarMazo(idMazo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		request.getRequestDispatcher("RecuperarMazos").forward(request, response);
 	}
+
 }

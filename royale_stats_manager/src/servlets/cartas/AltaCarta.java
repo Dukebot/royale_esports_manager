@@ -22,13 +22,19 @@ public class AltaCarta extends HttpServlet {
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String nombre = request.getParameter("nombre");
 		int coste = Integer.parseInt( request.getParameter("coste") );
 		
-		Carta c = new Carta(nombre, coste);
+		Carta c = new Carta();
 		GestionCartas gCartas = new GestionCartas();
 		
+		c.setNombre(nombre);
+		c.setCoste(coste);
+		
 		gCartas.altaCarta(c);
-		request.getRequestDispatcher("menu_principal.html").forward(request, response);
+		
+		request.setAttribute("cartas", gCartas.recuperarCartas());
+		request.getRequestDispatcher("cartas/ver_cartas.jsp").forward(request, response);
 	}
 }

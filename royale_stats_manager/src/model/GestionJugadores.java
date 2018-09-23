@@ -8,39 +8,39 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
-import entities.Carta;
-import entities.Mazo;
+import entities.Jugador;
 
-public class GestionMazos {
+public class GestionJugadores {
 
 	private EntityManager getEntityManager() {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("royale_stats_manager");
 		return factory.createEntityManager();
 	}
 	
-	public void altaMazo(Mazo m) {
+	public void altaJugador(Jugador j) {
 		EntityManager em = getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		{
-			em.persist(m);
+			em.persist(j);
 		}
 		tx.commit();
 	}
 	
-	public List<Mazo> recuperarMazos() {
+	public List<Jugador> recuperarJugadores() {
 		EntityManager em = getEntityManager();
-		TypedQuery<Mazo> qr = em.createQuery("Select m from Mazo m", Mazo.class);
+		TypedQuery<Jugador> qr = em.createQuery("Select j from Jugador j", Jugador.class);
 		return qr.getResultList();
 	}
 	
-	public void eliminarMazo(int idMazo) {
+	public void eliminarJugador(int idJugador) {
 		EntityManager em = getEntityManager();
-		Mazo m = em.find(Mazo.class, idMazo);
+		Jugador j = em.find(Jugador.class, idJugador);
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		{
-			if (m != null) em.remove(m);
+			if (j != null) em.remove(j);
+			else System.out.println("No se ha encontrado el jugador con id " + idJugador);
 		}
 		tx.commit();
 	}

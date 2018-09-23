@@ -48,7 +48,7 @@
 						<td>${mazo.carta6.getNombre()}</td>
 						<td>${mazo.carta7.getNombre()}</td>
 						<td>${mazo.carta8.getNombre()}</td>
-						<td><ahref="ControladorMazos?op=doEliminarMazo&idMazo=${mazo.id}">Eliminar</a></td>
+						<td><a href="ControladorMazos?op=doEliminarMazo&idMazo=${mazo.id}">Eliminar</a></td>
 					</tr>
 				</c:forEach>
 			</table>

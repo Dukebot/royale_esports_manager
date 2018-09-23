@@ -2,6 +2,7 @@ package entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -18,6 +19,10 @@ public class Equipo implements Serializable {
 	private Integer id;
 
 	private String nombre;
+
+	//bi-directional many-to-one association to Jugador
+	@OneToMany(mappedBy="equipo")
+	private List<Jugador> jugadors;
 
 	public Equipo() {
 	}
@@ -36,6 +41,28 @@ public class Equipo implements Serializable {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public List<Jugador> getJugadors() {
+		return this.jugadors;
+	}
+
+	public void setJugadors(List<Jugador> jugadors) {
+		this.jugadors = jugadors;
+	}
+
+	public Jugador addJugador(Jugador jugador) {
+		getJugadors().add(jugador);
+		jugador.setEquipo(this);
+
+		return jugador;
+	}
+
+	public Jugador removeJugador(Jugador jugador) {
+		getJugadors().remove(jugador);
+		jugador.setEquipo(null);
+
+		return jugador;
 	}
 
 }

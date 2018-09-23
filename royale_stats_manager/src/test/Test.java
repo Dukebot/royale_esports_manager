@@ -31,7 +31,9 @@ public class Test {
 		{
 			Carta c;
 			for (int i = 0; i < 50; i++) {
-				c = new Carta("Carta " + i, 1);
+				c = new Carta();
+				c.setNombre("Carta " + i);
+				c.setCoste(1);
 				em.persist(c);
 				System.out.println("Hemos guardado la carta con nombre " + c.getNombre() + " en la base de datos");
 			}

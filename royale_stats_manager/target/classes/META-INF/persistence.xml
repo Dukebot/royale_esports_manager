@@ -4,11 +4,11 @@
 		<class>entities.Ban</class>
 		<class>entities.BanPK</class>
 		<class>entities.Campeonato</class>
-		<class>entities.Carta</class>
 		<class>entities.Equipo</class>
-		<class>entities.Jugador</class>
-		<class>entities.Mazo</class>
 		<class>entities.Partido</class>
+		<class>entities.Jugador</class>
+		<class>entities.Carta</class>
+		<class>entities.Mazo</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/royale_sports_manager"/>
 			<property name="javax.persistence.jdbc.user" value="postgres"/>

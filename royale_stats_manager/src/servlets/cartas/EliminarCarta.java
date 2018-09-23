@@ -27,5 +27,4 @@ public class EliminarCarta extends HttpServlet {
 		gc.eliminarCarta(idCarta);
 		request.getRequestDispatcher("RecuperarCartas").forward(request, response);
 	}
-
 }

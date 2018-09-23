@@ -23,11 +23,6 @@ public class Carta implements Serializable {
 
 	public Carta() {
 	}
-	
-	public Carta(String nombre, int coste) {
-		this.nombre = nombre;
-		this.coste = coste;
-	}
 
 	public Integer getId() {
 		return this.id;

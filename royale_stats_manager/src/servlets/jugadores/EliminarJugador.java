@@ -1,7 +1,6 @@
-package servlets.cartas;
+package servlets.jugadores;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,23 +8,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import entities.Carta;
-import model.GestionCartas;
+import model.GestionJugadores;
 
 /**
- * Servlet implementation class RecuperarAction
+ * Servlet implementation class EliminaContacto
  */
-@WebServlet("/RecuperarCartas")
-public class RecuperarCartas extends HttpServlet {
+@WebServlet("/EliminarJugador")
+public class EliminarJugador extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		GestionCartas gCartas = new GestionCartas();
-		List<Carta> cartas = gCartas.recuperarCartas();
-		request.setAttribute("cartas", cartas);
-		request.getRequestDispatcher("cartas/ver_cartas.jsp").forward(request, response);
+		
+		int idJugador = Integer.parseInt(request.getParameter("idJugador"));
+		GestionJugadores gj = new GestionJugadores();
+		gj.eliminarJugador(idJugador);
+		request.getRequestDispatcher("RecuperarJugadores").forward(request, response);
 	}
 }
