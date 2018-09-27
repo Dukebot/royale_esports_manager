@@ -3,7 +3,9 @@
 Aplicación web para gestionar un club de e-sports de Clash Royale.
 
 Entorno de desarrollo: Eclipse
+
 Tipo de proyecto: Dynamic web project
+
 Librerías:
 * Java Persistence Api
 * Postgre sql driver
